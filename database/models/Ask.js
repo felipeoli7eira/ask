@@ -21,3 +21,5 @@ const Ask = Database.define(
 
 /** se a tabela não existir, vai ser criada. Mas caso ela exista, não é pra forçar a criação (re-criar) **/
 Ask.sync( { force: false } ).then(() => console.log("DatabaseSync: asks"))
+
+module.exports = Ask

@@ -1,6 +1,6 @@
 const express = require("express")
 const Database = require("./database/Database")
-const AskModel = require("./database/models/Ask")
+const Ask = require("./database/models/Ask")
 
 const app = express()
 
@@ -41,9 +41,21 @@ app.get("/perguntar", (req, res) => {
 
 app.post("/perguntar", (req, res) => {
 
-    const { subject, desc } = req.body
+    const { subject, description } = req.body
 
-    res.json(req.body)
+    /** INSERT INTO asks */
+    Ask.create(
+        {
+            subject,
+            description
+        }
+    )
+    .then(() => {
+        res.redirect("/")
+    })
+    .catch((error) => {
+        console.log("DBCreateError: " + error)
+    })
 })
 
 /********* server *********/
