@@ -30,13 +30,21 @@ app.use(express.urlencoded({ extended: false }))
 /** raiz */
 app.get("/", (req, res) => {
 
-    res.render("view", { vname: "home" })
+    /** SELECT * FROM asks */
+    /**
+     * por padrão, o sequelize trás junto com os dados, outras configurações.
+     * com o parâmetro { raw: true } ele trás os dados e nada mais
+    */
+    Ask.findAll({ raw: true }).then((results) => {
+
+        res.render("view", { vname: "home", data: results })
+    })
 })
 
 /** perguntar */
 app.get("/perguntar", (req, res) => {
 
-    res.render("view", { vname: "ask" })
+    res.render("view", { vname: "ask", data: {} })
 })
 
 app.post("/perguntar", (req, res) => {

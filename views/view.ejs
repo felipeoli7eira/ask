@@ -9,13 +9,14 @@
     </head>
     <body>
         <div id="app">
+
             <% if(typeof vname !== "undefined") { %>
 
-                <%- include(`pages/${vname}.ejs`) %>
+                <%- include(`pages/${vname}.ejs`, {data}) %>
 
             <% } else { %>
 
-                <%- include("pages/home.ejs") %>
+                <%- include("pages/home.ejs", {data}) %>
 
             <% } %>
         </div>

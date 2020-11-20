@@ -1,1 +1,19 @@
-<h1>home</h1>
+<div class="asks">
+    <div class="container mt-5">
+
+        <nav class="mb-5">
+            <a href="/perguntar" class="btn btn-info shadow font-weight-bold">perguntar</a>
+        </nav>
+
+        <% data.forEach((ask) => { %>
+            <div class="alert alert-light">
+                <h4 class="alert-heading font-size-18"><%= ask.subject %></h4>
+                <p><%= ask.description %></p>
+                <hr>
+                <nav>
+                    <a href="/responder" class="btn btn-success shadow font-weight-bold">responder</a>
+                </nav>
+            </div>
+        <% }) %>
+    </div>
+</div>
