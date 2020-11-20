@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
      * por padrão, o sequelize trás junto com os dados, outras configurações.
      * com o parâmetro { raw: true } ele trás os dados e nada mais
     */
-    Ask.findAll({ raw: true }).then((results) => {
+    Ask.findAll({ raw: true, order: [ ["id", "DESC"] ] }).then((results) => {
 
         res.render("view", { vname: "home", data: results })
     })
