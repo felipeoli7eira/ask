@@ -1,0 +1,28 @@
+<div id="ask" class="mt-5 container">
+  <div class="row">
+    <div class="col col-12 col-sm-6 col-md-6 mx-auto">
+
+      <h1 class="text-center font-size-19 mb-5">Faça sua pergunta usando o formulário abaixo</h1>
+
+      <form action="/perguntar" method="post">
+
+        <div class="form-group mb-2">
+          <label for="subject" class="m-0 font-weight-bold">Assunto</label>
+          <input type="text" name="subject" id="subject" class="form-control" />
+        </div>
+
+        <div class="form-group">
+          <label for="desc" class="m-0 font-weight-bold">Descrição</label>
+          <textarea name="desc" class="form-control" id="desc" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <button type="reset" class="btn btn-light">limpar</button>
+          <button type="submit" class="btn btn-info shadow font-weight-bold">perguntar</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

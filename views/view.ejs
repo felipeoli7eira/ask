@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>P&R | Formação NodeJS</title>
+        <link rel="stylesheet" href="/bootstrap-4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <% if(typeof vname !== "undefined") { %>
+
+                <%- include(`pages/${vname}.ejs`) %>
+
+            <% } else { %>
+
+                <%- include("pages/home.ejs") %>
+
+            <% } %>
+        </div>
+
+        <script src="/jquery/jquery-3.min.js"></script>
+        <script src="/bootstrap-4/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
