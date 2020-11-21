@@ -4,13 +4,13 @@
             <nav class="text-right">
                 <a href="/" class="btn btn-info font-weight-light shadow">perguntas</a>
             </nav>
-            <h1 class="font-size-22"><%= data.subject %></h1>
-            <p><%= data.description %></p>
+            <h1 class="font-size-22"><%= data.ask.subject %></h1>
+            <p><%= data.ask.description %></p>
             <hr>
 
             <form action="/responder" method="post">
                 <div class="input-group">
-                    <input type="hidden" name="ask_id" value="<%= data.id %>">
+                    <input type="hidden" name="ask_id" value="<%= data.ask.id %>">
                     <textarea name="answer" cols="30" autofocus rows="3" class="form-control" placeholder="Pode ajudar? digite sua responsta aqui..."></textarea>
                     <button type="submit" class="btn btn-info btn-block mt-1 shadow font-weight-bold">responder</button>
                 </div>
@@ -18,8 +18,14 @@
 
             <h1 class="font-size-20 my-5 text-info">Respostas enviadas até agora</h1>
             <div class="mb-5">
-                <p>Lorem ipsum dolor sit amet</p>
-                <hr>
+                <% if (data.answers) { %>
+
+                    <% data.answers.forEach ((answer) => { %>
+                        <p><%= answer.body %></p>
+                        <hr>
+                    <% }) %>
+
+                <% } %>
             </div>
         </div>
     </div>

@@ -51,7 +51,11 @@ app.get("/responder/:id", (req, res) => {
 
         if (ask)
         {
-            res.render("view", {vname: "answer", data: ask})
+            Answer.findAll({ where: { ask_id: id }, order: [ ["id", "DESC"] ] })
+            .then((answers) => {
+
+                res.render("view", {vname: "answer", data: {ask, answers}})
+            })
         }
         else
         {
