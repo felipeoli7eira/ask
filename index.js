@@ -6,12 +6,8 @@ const Answer = require("./database/models/Answer")
 const app = express()
 
 Database.authenticate()
-.then(() => {
-    console.log("Connected")
-})
-.catch((error) => {
-    console.log("DBConnectionError: " + error)
-})
+.then(() => console.log("Connected"))
+.catch((error) => console.log("DBConnectionError: " + error))
 
 /********* configs *********/
 
@@ -67,7 +63,13 @@ app.get("/responder/:id", (req, res) => {
 
 app.post("/responder", (req, res) => {
 
-    res.send(req.params.id)
+    let { ask_id, answer } = req.body
+
+    Answer.create( { ask_id, body: answer } )
+    .then(() => {
+        res.redirect(`/responder/${ask_id}`)
+    })
+    .catch((error) => console.log("AnswerCreateError: " + error))
 })
 
 /** perguntar */
