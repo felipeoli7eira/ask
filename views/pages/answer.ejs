@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row mt-5">
+        <div class="col col-12 col-sm-6 col-md-6 col-lg-6 mx-auto">
+            <nav class="text-right">
+                <a href="/" class="btn btn-info font-weight-light shadow">perguntas</a>
+            </nav>
+            <h1 class="font-size-22"><%= data.subject %></h1>
+            <p><%= data.description %></p>
+            <hr>
+
+            <form action="/responder" method="post">
+                <div class="input-group">
+                    <input type="hidden" name="ask_id" value="<%= data.id %>">
+                    <textarea name="response" cols="30" autofocus rows="3" class="form-control" placeholder="Pode ajudar? digite sua responsta aqui..."></textarea>
+                    <button type="submit" class="btn btn-info btn-block mt-1 shadow font-weight-bold">responder</button>
+                </div>
+            </form>
+
+            <h1 class="font-size-20 my-5 text-info">Respostas enviadas até agora</h1>
+            <div class="mb-5">
+                <p>Lorem ipsum dolor sit amet</p>
+                <hr>
+
+                <p>Lorem ipsum dolor sit amet</p>
+                <hr>
+
+                <p>Lorem ipsum dolor sit amet</p>
+                <hr>
+
+                <p>Lorem ipsum dolor sit amet</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,7 @@
 const express = require("express")
 const Database = require("./database/Database")
 const Ask = require("./database/models/Ask")
+const Answer = require("./database/models/Answer")
 
 const app = express()
 
@@ -39,6 +40,34 @@ app.get("/", (req, res) => {
 
         res.render("view", { vname: "home", data: results })
     })
+})
+
+/** perguntas */
+
+
+/** responder */
+app.get("/responder/:id", (req, res) => {
+
+    const { id } = req.params
+
+    Ask.findOne( { where: { id } } )
+    .then((ask) => {
+
+        if (ask)
+        {
+            res.render("view", {vname: "answer", data: ask})
+        }
+        else
+        {
+            res.redirect("/")
+        }
+    })
+    .catch((error) => console.log("***|findOneError|***: " + error))
+})
+
+app.post("/responder", (req, res) => {
+
+    res.send(req.params.id)
 })
 
 /** perguntar */
